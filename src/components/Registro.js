@@ -8,11 +8,11 @@ import { ReactComponent as SvgLogin } from './../images/registro.svg';
 
 
 const Svg = styled(SvgLogin)`
-    width: 100%;
-    max-height: 6.25rem;/* 100px */
-    margin-bottom: 1.25rem;/* 20px */
-
+	width: 100%;
+	max-height: 6.25rem; /* 100px */
+	margin-bottom: 1.25rem; /* 20px */
 `;
+
 const Registro = () => {
     return (
         <>
@@ -29,8 +29,9 @@ const Registro = () => {
                     </div>
                 </ContenedorHeader>
             </Header>
-            <Svg />
+
             <Formulario>
+                <Svg />
                 <Input
                     type="email"
                     name="email"

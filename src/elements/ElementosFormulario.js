@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import theme from "../theme";
-
+import styled from 'styled-components';
+import theme from './../theme';
 
 const ContenedorFiltros = styled.div`
     display: flex;
@@ -16,10 +15,9 @@ const ContenedorFiltros = styled.div`
         }
     }
 `;
-
+ 
 const Formulario = styled.form`
     padding: 0 2.5rem; /* 40px */
- 
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -38,7 +36,7 @@ const Formulario = styled.form`
         justify-content: start;
     }
 `;
-
+ 
 const Input = styled.input`
     font-size: 2.5rem; /* 40px */
     text-transform: uppercase;
@@ -50,16 +48,16 @@ const Input = styled.input`
         font-size: 2.2rem; /* 24px */
     }
 `;
-
+ 
 const InputGrande = styled(Input)`
     font-size: 4.37rem; /* 70px */
     font-weight: bold;
 `;
-
+ 
 const ContenedorBoton = styled.div`
     display: flex;
     justify-content: center;
     margin: 2.5rem 0;  /* 40px */
 `;
 
-export { ContenedorFiltros, Formulario, Input, InputGrande, ContenedorBoton };
+export {ContenedorFiltros, Formulario, Input, InputGrande, ContenedorBoton};
