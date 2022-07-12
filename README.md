@@ -1,1 +1,1 @@
-#   Registro de gastos
+#   REACT APP REGISTRO DE GASTOS
