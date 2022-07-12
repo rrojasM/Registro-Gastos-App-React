@@ -24,14 +24,13 @@ const Registro = () => {
                 <ContenedorHeader>
                     <Titulo>Crear Cuenta</Titulo>
                     <div>
-                        <Boton to="Login">Iniciar Sesión</Boton>
+                        <Boton to="/Login">Iniciar Sesión</Boton>
 
                     </div>
                 </ContenedorHeader>
             </Header>
-
+            <Svg />
             <Formulario>
-                <Svg />
                 <Input
                     type="email"
                     name="email"
