@@ -16,15 +16,13 @@ import Fondo from './elements/Fondo';
 
 WebFont.load({
   google: {
-    families: ['Work Sans:400,500,700', 'sans-serif']
+    families: ['Work Sans:300,400,500', 'sans-serif']
   }
 });
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    
     <BrowserRouter>
       <Contenedor>
         <Routes>
