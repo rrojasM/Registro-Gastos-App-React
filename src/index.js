@@ -10,6 +10,9 @@ import Registro from './components/Registro';
 import GastoCategoria from './components/GastosCategoria';
 import EditarGasto from './components/EditarGasto';
 import ListaGastos from './components/ListaGastos';
+/* import { Helmet } from "react-helmet";
+import favicon from './images/logo.png'; */
+import Fondo from './elements/Fondo';
 
 WebFont.load({
   google: {
@@ -17,9 +20,11 @@ WebFont.load({
   }
 });
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
+    
     <BrowserRouter>
       <Contenedor>
         <Routes>
@@ -28,9 +33,10 @@ root.render(
           <Route path='/Listado' element={<ListaGastos />} />
           <Route path='/GastoCategoria' element={<GastoCategoria />} />
           <Route path='/Editar:id' element={<EditarGasto />} />
-          <Route path='/' element={<App/>} />
+          <Route path='/' element={<App />} />
         </Routes>
       </Contenedor>
     </BrowserRouter>
-  </React.StrictMode>
+    <Fondo />
+  </>
 );
