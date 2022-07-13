@@ -17,7 +17,7 @@ import RoutesPrivate from './components/RoutesPrivate'
 
 WebFont.load({
   google: {
-    families: ['Work Sans:300,400,500', 'sans-serif']
+    families: ['Work Sans:100,300,400', 'sans-serif']
   }
 });
 
