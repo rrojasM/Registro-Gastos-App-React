@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import theme from "../theme";
+import IconCategoria from '../elements/IconCategoria';
 import { ReactComponent as IconDown } from '../images/down.svg';
 
 const ContenedorSelect = styled.div`
@@ -81,7 +82,9 @@ const SelectCategorias = ({ categoria, setCategoria }) => {
                 {mostrarSelect &&
                     <Opciones>
                         {categorias.map((item) => {
-                            return <Opcion key={item.id} data-valor={item.id} onClick={handleClick}>{item.texto}</Opcion>
+                            return <Opcion key={item.id} data-valor={item.id} onClick={handleClick}>
+                                <IconCategoria nombre={item.id} />{item.texto}
+                            </Opcion>
                         })}
                     </Opciones>
                 }
