@@ -12,6 +12,9 @@ const GastosCategoria = () => {
                 <BtnRegresar />
                 <Titulo>Gastos por Categoria</Titulo>
             </Header>
+
+
+            
         </>
     );
 }

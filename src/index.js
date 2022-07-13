@@ -56,10 +56,12 @@ root.render(
                 <App />
               </RoutesPrivate>
             } />
+
             {/*   <Route path='/listado' element={<ListaGastos />} />
             <Route path='/gastoCategoria' element={<GastoCategoria />} />
             <Route path='/editar:id' element={<EditarGasto />} />
             <Route path='/' element={<App />} /> */}
+
           </Routes>
         </Contenedor>
       </BrowserRouter>
