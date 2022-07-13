@@ -10,9 +10,9 @@ import Registro from './components/Registro';
 import GastoCategoria from './components/GastosCategoria';
 import EditarGasto from './components/EditarGasto';
 import ListaGastos from './components/ListaGastos';
-/* import { Helmet } from "react-helmet";
-import favicon from './images/logo.png'; */
 import Fondo from './elements/Fondo';
+import { AuthProvider } from './context/AuthContext';
+
 
 WebFont.load({
   google: {
@@ -23,18 +23,20 @@ WebFont.load({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <BrowserRouter>
-      <Contenedor>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route path='/registro' element={<Registro />} />
-          <Route path='/listado' element={<ListaGastos />} />
-          <Route path='/gastoCategoria' element={<GastoCategoria />} />
-          <Route path='/editar:id' element={<EditarGasto />} />
-          <Route path='/' element={<App />} />
-        </Routes>
-      </Contenedor>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Contenedor>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/registro' element={<Registro />} />
+            <Route path='/listado' element={<ListaGastos />} />
+            <Route path='/gastoCategoria' element={<GastoCategoria />} />
+            <Route path='/editar:id' element={<EditarGasto />} />
+            <Route path='/' element={<App />} />
+          </Routes>
+        </Contenedor>
+      </BrowserRouter>
+    </AuthProvider>
     <Fondo />
   </>
 );
