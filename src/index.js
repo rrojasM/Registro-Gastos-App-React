@@ -26,11 +26,11 @@ root.render(
     <BrowserRouter>
       <Contenedor>
         <Routes>
-          <Route path='/Login' element={<Login />} />
-          <Route path='/Registro' element={<Registro />} />
-          <Route path='/Listado' element={<ListaGastos />} />
-          <Route path='/GastoCategoria' element={<GastoCategoria />} />
-          <Route path='/Editar:id' element={<EditarGasto />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/registro' element={<Registro />} />
+          <Route path='/listado' element={<ListaGastos />} />
+          <Route path='/gastoCategoria' element={<GastoCategoria />} />
+          <Route path='/editar:id' element={<EditarGasto />} />
           <Route path='/' element={<App />} />
         </Routes>
       </Contenedor>

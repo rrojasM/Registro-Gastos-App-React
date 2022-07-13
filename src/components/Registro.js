@@ -58,7 +58,7 @@ const Registro = () => {
             setStateAlert(true);
             setAlerta({
                 tipo: "error",
-                mensaje: "INGRESE UN CORREO ELECTRONICO VALIDO..."
+                mensaje: "INGRESE UN CORREO ELECTRONICO."
             })
             return;
         }
@@ -67,7 +67,7 @@ const Registro = () => {
             setStateAlert(true);
             setAlerta({
                 tipo: "error",
-                mensaje: "INGRESE TODOS LOS DATOS DEL FORMULARIO"
+                mensaje: "INGRESE TODOS LOS DATOS DEL FORMULARIO."
             })
             return;
         }
@@ -76,7 +76,7 @@ const Registro = () => {
             setStateAlert(true);
             setAlerta({
                 tipo: "error",
-                mensaje: "LAS CONTRASEÑAS NO SON IGUALES"
+                mensaje: "LAS CONTRASEÑAS NO SON IGUALES."
             })
             return;
         }
@@ -117,8 +117,7 @@ const Registro = () => {
                 <ContenedorHeader>
                     <Titulo>Crear Cuenta</Titulo>
                     <div>
-                        <Boton to="/Login">Iniciar Sesión</Boton>
-
+                        <Boton to="/login">Iniciar Sesión</Boton>
                     </div>
                 </ContenedorHeader>
             </Header>
