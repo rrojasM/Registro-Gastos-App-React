@@ -8,11 +8,11 @@ import Boton from "./Boton";
 
 const BotonCerrar = () => {
     const navigate = useNavigate();
-    
+
     const cerrarSesion = async () => {
         try {
             await signOut(auth);
-            console.log('Sesión Terminada...');
+            console.log('SESIÓN TERMINADA...');
             navigate('/login')
 
         } catch (error) {

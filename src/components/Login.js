@@ -59,8 +59,8 @@ const Login = () => {
         }
 
         try {
-            //await auth.createUserWithEmailAndPassword(correo, password);
-            await signInWithEmailAndPassword(auth, correo, password)
+            await signInWithEmailAndPassword(auth, correo, password);
+            console.log("LOGIN CORRECTO");
             navigate('/')
 
         } catch (error) {
