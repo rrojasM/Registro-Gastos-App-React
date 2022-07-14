@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Header = styled.div`
     width: 100%;
     padding: 2.5rem; /* 40px */
@@ -12,18 +11,17 @@ const Header = styled.div`
         justify-content: start;
     }
 `;
-
+ 
 const Titulo = styled.h1`
     font-weight: normal;
     text-transform: uppercase;
-    font-size: 1.5rem; /* 40px */
-    
+    font-size: 2.5rem; /* 40px */
  
     @media(max-width: 60rem){ /* 950px */
         font-size: 2rem; /* 32px */
     }
 `;
-
+ 
 const ContenedorHeader = styled.div`
     width: 100%;
     display: flex;
@@ -41,13 +39,10 @@ const ContenedorHeader = styled.div`
         }
     }
 `;
-
+ 
 const ContenedorBotones = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
-
-
-
 export { Header, Titulo, ContenedorHeader, ContenedorBotones };

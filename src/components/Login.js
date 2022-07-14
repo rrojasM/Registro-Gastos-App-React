@@ -10,12 +10,7 @@ import { Formulario, Input, ContenedorBoton } from './../elements/ElementosFormu
 import { ReactComponent as SvgLogin } from './../images/login.svg';
 import Alerta from "../elements/Alerta";
 
-const Svg = styled(SvgLogin)`
-    width: 100%;
-    max-height: 12.5rem;/* 200px */
-    margin-bottom: 1.25rem;/* 20px */
 
-`;
 const Login = () => {
     const navigate = useNavigate();
     const [correo, setCorreo] = useState('');
@@ -99,7 +94,7 @@ const Login = () => {
             </Header>
 
             <Formulario onSubmit={handleSubmit}>
-                <Svg />
+                <SvgLogin/>
                 <Input
                     type="email"
                     name="email"

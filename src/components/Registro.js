@@ -1,33 +1,23 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../firebase/FirebaseConfig";
 import { Header, Titulo, ContenedorHeader } from './../elements/Header';
 import Boton from './../elements/Boton';
 import { Formulario, Input, ContenedorBoton } from './../elements/ElementosFormulario';
 import { ReactComponent as SvgLogin } from './../images/registro.svg';
-import Alerta from "../elements/Alerta";
 
 
-const Svg = styled(SvgLogin)`
-	width: 100%;
-	max-height: 6.25rem; 
-	margin-bottom: 1.25rem;  
-    
-    //width: 100%;
-    //max-height: 12.5rem;/* 200px */
-    //margin-bottom: 1.25rem;/* 20px */
+const Svg = styled(SvgLogin)`    
+    width: 100%;
+    max-height: 6.5rem;/* 200px */
+    margin-bottom: 1.25rem;/* 20px */
 `;
 
 const Registro = () => {
-    const navigate = useNavigate();
+
     const [correo, setCorreo] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
-    const [stateAlert, setStateAlert] = useState(false);
-    const [alerta, setAlerta] = useState({})
 
 
     const handleChange = (e) => {
@@ -46,65 +36,28 @@ const Registro = () => {
         }
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setStateAlert(false);
-        setAlerta({});
 
         /* Comprobamos que el correo es correcto */
         const expresionRegular = /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/;
 
         if (!expresionRegular.test(correo)) {
-            setStateAlert(true);
-            setAlerta({
-                tipo: "error",
-                mensaje: "INGRESE UN CORREO ELECTRONICO."
-            })
+            console.log('Ingresa un correo valido');
             return;
         }
 
         if (correo === '' || password === '' || password2 === '') {
-            setStateAlert(true);
-            setAlerta({
-                tipo: "error",
-                mensaje: "INGRESE TODOS LOS DATOS DEL FORMULARIO."
-            })
+            console.log('Rellene todos los datos');
             return;
         }
 
         if (password !== password2) {
-            setStateAlert(true);
-            setAlerta({
-                tipo: "error",
-                mensaje: "LAS CONTRASEÑAS NO SON IGUALES."
-            })
+            console.log('Las contraseñas no son iguales');
             return;
         }
 
-        try {
-            //await auth.createUserWithEmailAndPassword(correo, password);
-            await createUserWithEmailAndPassword(auth, correo, password)
-            navigate('/')
-
-        } catch (error) {
-            setStateAlert(true);
-            let mensaje;
-            switch (error.code) {
-                case 'auth/invalid-password':
-                    mensaje = 'La contraseña tiene que ser de al menos 6 caracteres.'
-                    break;
-                case 'auth/email-already-in-use':
-                    mensaje = 'Ya existe una cuenta con el correo electrónico proporcionado.'
-                    break;
-                case 'auth/invalid-email':
-                    mensaje = 'El correo electrónico no es válido.'
-                    break;
-                default:
-                    mensaje = 'Hubo un error al intentar crear la cuenta.'
-                    break;
-            }
-            setAlerta({ tipo: 'error', mensaje: mensaje });
-        }
+        console.log('REGISTRAMOS USUARIO');
     }
 
     return (
@@ -117,13 +70,17 @@ const Registro = () => {
                 <ContenedorHeader>
                     <Titulo>Crear Cuenta</Titulo>
                     <div>
-                        <Boton to="/login">Iniciar Sesión</Boton>
+                        <Boton to="/Login">Iniciar Sesión</Boton>
+
                     </div>
                 </ContenedorHeader>
             </Header>
+            <ContenedorHeader>
+            <Svg />
+            </ContenedorHeader>
 
             <Formulario onSubmit={handleSubmit}>
-                <Svg />
+                
                 <Input
                     type="email"
                     name="email"
@@ -149,12 +106,6 @@ const Registro = () => {
                     <Boton as="button" primario type="submit">Crear Cuenta</Boton>
                 </ContenedorBoton>
             </Formulario>
-            <Alerta
-                tipo={alerta.tipo}
-                mensaje={alerta.mensaje}
-                stateAlert={stateAlert}
-                changeStateAlert={setStateAlert}
-            />
         </>
 
     );

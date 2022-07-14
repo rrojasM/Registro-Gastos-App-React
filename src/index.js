@@ -17,7 +17,7 @@ import RoutesPrivate from './components/RoutesPrivate'
 
 WebFont.load({
   google: {
-    families: ['Work Sans:100,300,400', 'sans-serif']
+    families: ['Work Sans:400,500,700', 'sans-serif']
   }
 });
 
@@ -56,12 +56,6 @@ root.render(
                 <App />
               </RoutesPrivate>
             } />
-
-            {/*   <Route path='/listado' element={<ListaGastos />} />
-            <Route path='/gastoCategoria' element={<GastoCategoria />} />
-            <Route path='/editar:id' element={<EditarGasto />} />
-            <Route path='/' element={<App />} /> */}
-
           </Routes>
         </Contenedor>
       </BrowserRouter>
