@@ -28,7 +28,10 @@ const FormularioGasto = () => {
                     categoria={categoria}
                     setCategoria={setCategoria}
                 />
-                <DatePicker />
+                <DatePicker 
+                    fecha={fecha}
+                    setFecha={setFecha}
+                />
             </ContenedorFiltros>
 
             <div>
