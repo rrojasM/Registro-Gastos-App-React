@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/FirebaseConfig";
-import { Header, Titulo, ContenedorHeader } from './../elements/Header';
+import { Header, Titulo, ContenedorHeader, ContenedorBotones } from './../elements/Header';
 import Boton from './../elements/Boton';
 import { Formulario, Input, ContenedorBoton } from './../elements/ElementosFormulario';
 import { ReactComponent as SvgLogin } from './../images/login.svg';
@@ -88,13 +88,12 @@ const Login = () => {
                     <Titulo>Iniciar Sesión</Titulo>
                     <div>
                         <Boton to="/registro">Registrarse</Boton>
-
                     </div>
                 </ContenedorHeader>
             </Header>
-
             <Formulario onSubmit={handleSubmit}>
-                <SvgLogin/>
+                <SvgLogin />
+
                 <Input
                     type="email"
                     name="email"
@@ -114,7 +113,7 @@ const Login = () => {
                 </ContenedorBoton>
             </Formulario>
 
-            <Alerta 
+            <Alerta
                 tipo={alerta.tipo}
                 mensaje={alerta.mensaje}
                 stateAlert={stateAlert}

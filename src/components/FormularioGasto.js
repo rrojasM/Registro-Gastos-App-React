@@ -36,17 +36,33 @@ const FormularioGasto = () => {
         let cantidadParse = parseFloat(cantidad).toFixed(2);
 
         if (descripcion !== '' && cantidad !== '') {
-            AgregarGasto({
-                categoria: categoria,
-                descripcion: descripcion,
-                cantidad: cantidadParse,
-                fecha: getUnixTime(fecha),
-                uidUsuario: usuario.uid
-            });
-        }else{
-            console.log('AGREGA TODOS LOS VALORES');
-            setEstadoAlert(true)
-            setAlerta({tipo:'error', mensaje:'Rellena todos los campos'})
+            if (cantidad) {
+                AgregarGasto({
+                    categoria: categoria,
+                    descripcion: descripcion,
+                    cantidad: cantidadParse,
+                    fecha: getUnixTime(fecha),
+                    uidUsuario: usuario.uid
+                }).then(() => {
+                    setEstadoAlert(true);
+                    setCategoria('hogar');
+                    setFecha(new Date());
+                    setDescripcion('');
+                    setCantidad('');
+                    setAlerta({ tipo: 'exito', mensaje: 'Gasto agrgado correctamente.' });
+
+                }).catch((error) => {
+                    setEstadoAlert(true);
+                    setAlerta({ tipo: 'exito', mensaje: 'Hubo un error al agregar el gasto a la db.' })
+                })
+            } else {
+                setEstadoAlert(true);
+                setAlerta({ tipo: 'error', mensaje: 'El valor que ingresaste no es valido.' });
+            }
+
+        } else {
+            setEstadoAlert(true);
+            setAlerta({ tipo: 'error', mensaje: 'Rellena todos los campos.' });
         }
     }
 
@@ -88,7 +104,7 @@ const FormularioGasto = () => {
                     </Boton>
                 </ContenedorBoton>
             </div>
-            <Alerta 
+            <Alerta
                 tipo={alerta.tipo}
                 mensaje={alerta.mensaje}
                 stateAlert={estadoAlert}
