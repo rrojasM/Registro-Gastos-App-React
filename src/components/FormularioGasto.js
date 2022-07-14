@@ -5,7 +5,6 @@ import { ReactComponent as IconPlus } from './../images/plus.svg';
 import SelectCategorias from "./SelectCategorias";
 import DatePicker from "./DatePicker";
 import AgregarGasto from "../firebase/AgregarGasto";
-import fromUnixTime from "date-fns/fromUnixTime";
 import getUnixTime from "date-fns/getUnixTime";
 import { useAuth } from '../context/AuthContext';
 import Alerta from '../elements/Alerta';
