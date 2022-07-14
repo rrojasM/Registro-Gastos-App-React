@@ -7,8 +7,6 @@ import UseObtenerGastos from "../hooks/UseObtenerGastos";
 import {
     Lista,
     ElementoLista,
-    ListaDeCategorias,
-    ElementoListaCategorias,
     Categoria,
     Descripcion,
     Valor,
@@ -31,7 +29,7 @@ import { es } from "date-fns/locale";
 
 
 const ListaGastos = () => {
-    const [gastos] = UseObtenerGastos();
+    const [gastos, obtenerMasGastos, hayMasContenido] = UseObtenerGastos();
 
     const formatFecha = (fecha) => {
         return format(fromUnixTime(fecha), "dd 'de' MMMM 'de' yyyy", { locale: es });
@@ -39,16 +37,16 @@ const ListaGastos = () => {
 
     const fechaIgual = (gastos, index, gasto) => {
 
-        if (index !==0 ) {
+        if (index !== 0) {
             const fechaActual = formatFecha(gasto.fecha);
-            const fechaGastoAnterior = formatFecha(gastos[index -1].fecha);
-            
-            if(fechaActual === fechaGastoAnterior){
+            const fechaGastoAnterior = formatFecha(gastos[index - 1].fecha);
+
+            if (fechaActual === fechaGastoAnterior) {
                 return true
-            }else{
+            } else {
                 return false
             }
-        } 
+        }
     }
 
     return (
@@ -64,7 +62,7 @@ const ListaGastos = () => {
                 {gastos.map((gasto, i) => {
                     return (
                         <div key={gasto.id}>
-                            {!fechaIgual(gastos, i, gasto) && <Fecha>{formatFecha(gasto.fecha)}</Fecha> }
+                            {!fechaIgual(gastos, i, gasto) && <Fecha>{formatFecha(gasto.fecha)}</Fecha>}
                             <ElementoLista key={gasto.id}>
                                 <Categoria>
                                     <IconoCategoria nombre={gasto.categoria} />
@@ -88,9 +86,12 @@ const ListaGastos = () => {
                     );
                 })}
 
-                <ContenedorBotonCentral>
-                    <BotonCargarMas>Cargar más</BotonCargarMas>
-                </ContenedorBotonCentral>
+                {hayMasContenido &&
+                    <ContenedorBotonCentral>
+                        <BotonCargarMas onClick={() => obtenerMasGastos()}>Cargar más</BotonCargarMas>
+                    </ContenedorBotonCentral>
+                }
+
 
                 {gastos.length === 0 &&
                     <ContenedorSubtitulo>

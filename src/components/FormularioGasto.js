@@ -30,7 +30,6 @@ const FormularioGasto = () => {
     }
 
     const handleSubmit = (e) => {
-        console.log('SE EJECUTO HANDLE SUBMIT');
         e.preventDefault();
         let cantidadParse = parseFloat(cantidad).toFixed(2);
 
