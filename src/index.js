@@ -45,7 +45,7 @@ root.render(
               </RoutesPrivate>
             } />
 
-            <Route path='/editar:id' element={
+            <Route path='/editar/:id' element={
               <RoutesPrivate >
                 <EditarGasto />
               </RoutesPrivate>
