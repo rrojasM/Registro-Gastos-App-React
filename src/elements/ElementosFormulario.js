@@ -60,4 +60,12 @@ const ContenedorBoton = styled.div`
     margin: 2.5rem 0;  /* 40px */
 `;
 
-export {ContenedorFiltros, Formulario, Input, InputGrande, ContenedorBoton};
+const ContenedorImage = styled.div`
+    justify-content: center;
+    height: 100px;
+    display: flex;
+    margin: 50px;
+    top:500px
+`;
+
+export {ContenedorFiltros, Formulario, Input, InputGrande, ContenedorBoton,ContenedorImage};

@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/FirebaseConfig";
 import { Header, Titulo, ContenedorHeader } from './../elements/Header';
 import Boton from './../elements/Boton';
-import { Formulario, Input, ContenedorBoton } from './../elements/ElementosFormulario';
+import { Formulario, Input, ContenedorBoton, ContenedorImage } from './../elements/ElementosFormulario';
 import { ReactComponent as SvgLogin } from './../images/login.svg';
 import Alerta from "../elements/Alerta";
 
@@ -89,10 +89,10 @@ const Login = () => {
                         <Boton to="/registro">Registrarse</Boton>
                     </div>
                 </ContenedorHeader>
+
             </Header>
             <Formulario onSubmit={handleSubmit}>
-                <SvgLogin />
-
+            <SvgLogin />
                 <Input
                     type="email"
                     name="email"
