@@ -14,7 +14,6 @@ import EditarGasto from "../firebase/EditarGasto";
 
 const FormularioGasto = ({ gasto }) => {
     const history = useNavigate();
-
     const [descripcion, setDescripcion] = useState('');
     const [cantidad, setCantidad] = useState('');
     const [categoria, setCategoria] = useState('hogar');
@@ -22,7 +21,6 @@ const FormularioGasto = ({ gasto }) => {
     const [estadoAlert, setEstadoAlert] = useState(false);
     const [alerta, setAlerta] = useState({})
     const { usuario } = useAuth();
-
 
     useEffect(() => {
         //Comprobamos si ya hay algun gasto
@@ -37,7 +35,6 @@ const FormularioGasto = ({ gasto }) => {
             }
         }
     }, [gasto, usuario, history]);
-
 
 
     const handleChange = (e) => {

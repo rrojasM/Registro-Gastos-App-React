@@ -61,6 +61,7 @@ const DatePicker = ({ fecha, setFecha }) => {
             <input type="text" readOnly value={formatFecha(fecha)} onClick={() => { setVisible(!visible) }} />
             {visible &&
                 <DayPicker
+                    onDayClick={() => { setVisible(!visible) }}
                     mode="single"
                     selected={fecha}
                     onSelect={setFecha}
