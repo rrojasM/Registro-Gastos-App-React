@@ -34,7 +34,7 @@ const UseObtenerGastosPorMes = () => {
 
     }, [usuario])
 
-    return [gastos];
+    return gastos;
 }
 
 export default UseObtenerGastosPorMes;

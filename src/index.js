@@ -13,6 +13,7 @@ import ListaGastos from './components/ListaGastos';
 import Fondo from './elements/Fondo';
 import { AuthProvider } from './context/AuthContext';
 import RoutesPrivate from './components/RoutesPrivate'
+import { TotalGastadoProvider } from './context/TotalPorMes';
 
 
 WebFont.load({
@@ -25,40 +26,42 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <AuthProvider>
-      <BrowserRouter>
-        <Contenedor>
-          <Routes>
-            {/**Rutas publicas */}
-            <Route path='/login' element={<Login />} />
-            <Route path='/registro' element={<Registro />} />
+      <TotalGastadoProvider>
+        <BrowserRouter>
+          <Contenedor>
+            <Routes>
+              {/**Rutas publicas */}
+              <Route path='/login' element={<Login />} />
+              <Route path='/registro' element={<Registro />} />
 
-            {/**Routas privadas */}
-            <Route path='/categorias' element={
-              <RoutesPrivate >
-                <GastoCategoria />
-              </RoutesPrivate>
-            } />
+              {/**Routas privadas */}
+              <Route path='/categorias' element={
+                <RoutesPrivate >
+                  <GastoCategoria />
+                </RoutesPrivate>
+              } />
 
-            <Route path='/lista' element={
-              <RoutesPrivate >
-                <ListaGastos />
-              </RoutesPrivate>
-            } />
+              <Route path='/lista' element={
+                <RoutesPrivate >
+                  <ListaGastos />
+                </RoutesPrivate>
+              } />
 
-            <Route path='/editar/:id' element={
-              <RoutesPrivate >
-                <EditarGasto />
-              </RoutesPrivate>
-            } />
+              <Route path='/editar/:id' element={
+                <RoutesPrivate >
+                  <EditarGasto />
+                </RoutesPrivate>
+              } />
 
-            <Route path='/' element={
-              <RoutesPrivate >
-                <App />
-              </RoutesPrivate>
-            } />
-          </Routes>
-        </Contenedor>
-      </BrowserRouter>
+              <Route path='/' element={
+                <RoutesPrivate >
+                  <App />
+                </RoutesPrivate>
+              } />
+            </Routes>
+          </Contenedor>
+        </BrowserRouter>
+      </TotalGastadoProvider>
     </AuthProvider>
     <Fondo />
   </>
