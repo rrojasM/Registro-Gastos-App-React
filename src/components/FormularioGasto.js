@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ContenedorFiltros, Formulario, ContenedorBoton, Input, InputGrande } from "../elements/ElementosFormulario";
 import Boton from "../elements/Boton";
 import { ReactComponent as IconPlus } from './../images/plus.svg';
@@ -6,11 +6,14 @@ import SelectCategorias from "./SelectCategorias";
 import DatePicker from "./DatePicker";
 import AgregarGasto from "../firebase/AgregarGasto";
 import getUnixTime from "date-fns/getUnixTime";
+import fromUnixTime from "date-fns/fromUnixTime";
 import { useAuth } from '../context/AuthContext';
 import Alerta from '../elements/Alerta';
+import { useNavigate } from "react-router-dom";
+import EditarGasto from "../firebase/EditarGasto";
 
-
-const FormularioGasto = () => {
+const FormularioGasto = ({ gasto }) => {
+    const history = useNavigate();
 
     const [descripcion, setDescripcion] = useState('');
     const [cantidad, setCantidad] = useState('');
@@ -19,6 +22,22 @@ const FormularioGasto = () => {
     const [estadoAlert, setEstadoAlert] = useState(false);
     const [alerta, setAlerta] = useState({})
     const { usuario } = useAuth();
+
+
+    useEffect(() => {
+        //Comprobamos si ya hay algun gasto
+        if (gasto) {
+            if (gasto.data().uidUsuario === usuario.uid) {
+                setCategoria(gasto.data().categoria);
+                setFecha(fromUnixTime(gasto.data().fecha));
+                setDescripcion(gasto.data().descripcion);
+                setCantidad(gasto.data().cantidad);
+            } else {
+                history("/lista")
+            }
+        }
+    }, [gasto, usuario, history]);
+
 
 
     const handleChange = (e) => {
@@ -35,24 +54,38 @@ const FormularioGasto = () => {
 
         if (descripcion !== '' && cantidad !== '') {
             if (cantidad) {
-                AgregarGasto({
-                    categoria: categoria,
-                    descripcion: descripcion,
-                    cantidad: cantidadParse,
-                    fecha: getUnixTime(fecha),
-                    uidUsuario: usuario.uid
-                }).then(() => {
-                    setEstadoAlert(true);
-                    setCategoria('hogar');
-                    setFecha(new Date());
-                    setDescripcion('');
-                    setCantidad('');
-                    setAlerta({ tipo: 'exito', mensaje: 'Gasto agrgado correctamente.' });
 
-                }).catch((error) => {
-                    setEstadoAlert(true);
-                    setAlerta({ tipo: 'exito', mensaje: 'Hubo un error al agregar el gasto a la db.' })
-                })
+                if (gasto) {
+                    EditarGasto({
+                        id: gasto.id,
+                        descripcion: categoria,
+                        cantidad: cantidad,
+                        fecha: getUnixTime(fecha),
+                        categoria: categoria
+                    }).then(() => {
+                        history('/lista')
+                    }).catch((err) => console.log('ERROR EN EDITAR', err))
+                } else {
+                    AgregarGasto({
+                        categoria: categoria,
+                        descripcion: descripcion,
+                        cantidad: cantidadParse,
+                        fecha: getUnixTime(fecha),
+                        uidUsuario: usuario.uid
+                    }).then(() => {
+                        setEstadoAlert(true);
+                        setCategoria('hogar');
+                        setFecha(new Date());
+                        setDescripcion('');
+                        setCantidad('');
+                        setAlerta({ tipo: 'exito', mensaje: 'Gasto agrgado correctamente.' });
+
+                    }).catch((error) => {
+                        setEstadoAlert(true);
+                        setAlerta({ tipo: 'exito', mensaje: 'Hubo un error al agregar el gasto a la db.' })
+                    })
+                }
+
             } else {
                 setEstadoAlert(true);
                 setAlerta({ tipo: 'error', mensaje: 'El valor que ingresaste no es valido.' });
@@ -98,7 +131,7 @@ const FormularioGasto = () => {
 
                 <ContenedorBoton>
                     <Boton as="button" primario conIcono type="submit">
-                        Agregar Gasto <IconPlus />
+                        {gasto ? 'Actualizar Gasto': 'Agregar Gasto'} <IconPlus />
                     </Boton>
                 </ContenedorBoton>
             </div>
