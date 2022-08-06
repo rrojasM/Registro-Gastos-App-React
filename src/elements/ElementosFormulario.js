@@ -22,8 +22,7 @@ const Formulario = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-content: center;
-    align-items: center;
+    //align-content: center;
     input {
         width: 100%;
         text-align: center;

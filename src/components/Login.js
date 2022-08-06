@@ -88,7 +88,7 @@ const Login = () => {
                 </ContenedorHeader>
 
             </Header>
-            <Formulario onSubmit={handleSubmit}>
+            <Formulario onSubmit={handleSubmit} style={{ alignItems: "center" }}>
                 <SvgLogin />
                 <Input
                     type="email"
