@@ -17,10 +17,7 @@ const Login = () => {
     const [stateAlert, setStateAlert] = useState(false);
     const [alerta, setAlerta] = useState({});
 
-
-
     const handleChange = (e) => {
-
         if (e.target.name === 'email') {
             setCorreo(e.target.value);
         } else if (e.target.name === 'password') {
@@ -92,7 +89,7 @@ const Login = () => {
 
             </Header>
             <Formulario onSubmit={handleSubmit}>
-            <SvgLogin />
+                <SvgLogin />
                 <Input
                     type="email"
                     name="email"
